@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Timers App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.cdnfonts.com/css/alarm-clock" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Multiple Timers App</h1>
+      <div class="timer-input">
+        <label for="time-input">Set Time :</label>
+        <div class="input-fields">
+          <input type="text" id="hours" placeholder="HH" />
+          <span>:</span>
+          <input type="text" id="minutes" placeholder="MM" />
+          <span>:</span>
+          <input type="text" id="seconds" placeholder="SS" />
+          <button id="set-timer">Set</button>
+        </div>
+      </div>
+    </div>
+    <div class="current-timers">
+      <button id="current-timers-head">Current Timers</button>
+      <p id="no-timers"></p>
+      <div id="all-timers"></div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
