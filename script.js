@@ -66,7 +66,7 @@ const startTimer = (timer, index) => {
     } else {
       clearInterval(timer.intervalId);
       timer.completed = true;
-      displayTimers(); // Update the display after marking as completed
+      displayTimers();
       return;
     }
     displayTimers();
