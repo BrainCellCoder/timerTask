@@ -4,6 +4,7 @@ const secondsInput = document.getElementById("seconds");
 const setBtn = document.getElementById("set-timer");
 const allTimersDiv = document.getElementById("all-timers");
 const timerHeading = document.getElementById("no-timers");
+const alertSound = document.getElementById("alert-sound");
 timerHeading.innerText = "You have no timers currently!";
 const allTimers = [];
 
@@ -31,14 +32,21 @@ const displayTimers = () => {
     let labelDisplay = timer.completed ? "" : "<p>Timer Left:</p>";
 
     let HTML = `
-          <div class="timer ${timeUpClass}" id="${index}">
-              ${labelDisplay}
-              <p class="time">${timeDisplay}</p>
-              <button class="delete-btn" onclick="removeTimer(${index})">Delete</button>
-          </div>
-        `;
+      <div class="timer ${timeUpClass}" id="${index}">
+          ${labelDisplay}
+          <p class="time">${timeDisplay}</p>
+          <button class="delete-btn" onclick="removeTimer(${index})">Delete</button>
+      </div>
+    `;
     allTimersDiv.insertAdjacentHTML("beforeend", HTML);
   });
+
+  if (allTimers.some((timer) => timer.completed)) {
+    alertSound.play();
+  } else {
+    alertSound.pause();
+    alertSound.currentTime = 0;
+  }
 
   timerHeading.innerText =
     allTimers.length === 0 ? "You have no timers currently!" : "";
@@ -58,7 +66,7 @@ const startTimer = (timer, index) => {
     } else {
       clearInterval(timer.intervalId);
       timer.completed = true;
-      displayTimers();
+      displayTimers(); // Update the display after marking as completed
       return;
     }
     displayTimers();
